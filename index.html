@@ -33,6 +33,10 @@
       --dem:       #2a0a0a;
       --dem-b:     #8c1a1a;
       --dem-t:     #f06060;
+
+      --trav:      #1a1a3a;
+      --trav-b:    #5a3a8c;
+      --trav-t:    #c8a0f0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -187,6 +191,7 @@
     .align-out    { background: var(--out);   color: var(--out-t);   border-left: 3px solid var(--out-b); }
     .align-minion { background: var(--min);   color: var(--min-t);   border-left: 3px solid var(--min-b); }
     .align-demon  { background: var(--dem);   color: var(--dem-t);   border-left: 3px solid var(--dem-b); }
+    .align-trav   { background: var(--trav);  color: var(--trav-t);  border-left: 3px solid var(--trav-b); }
 
     /* ── Role cards ── */
     .role-grid {
@@ -212,6 +217,7 @@
     .role-card.out    { border-top: 3px solid var(--out-b);  }
     .role-card.minion { border-top: 3px solid var(--min-b);  }
     .role-card.demon  { border-top: 3px solid var(--dem-b);  }
+    .role-card.trav   { border-top: 3px solid var(--trav-b); }
 
     .role-header {
       display: flex;
@@ -230,6 +236,7 @@
     .role-card.out    .role-name { color: var(--out-t);  }
     .role-card.minion .role-name { color: var(--min-t);  }
     .role-card.demon  .role-name { color: var(--dem-t);  }
+    .role-card.trav   .role-name { color: var(--trav-t); }
 
     .role-type {
       font-size: 0.72rem;
@@ -292,6 +299,7 @@
   <a href="#about">About</a>
   <a href="#rules">Rules Overview</a>
   <a href="#roles">Roles</a>
+  <a href="#travellers">Travellers</a>
 </nav>
 
 <main>
@@ -386,6 +394,17 @@
           Good wins the moment the last Demon is executed or dies at night. Evil wins at the
           <em>start</em> of a day when only 2 players remain alive. Some roles have alternate win
           conditions — check the role card.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Travellers</h3>
+        <p>
+          Travellers are optional extra players who join mid-game or play alongside a full group.
+          They are <strong>exiled</strong> (not executed) by majority vote — this does not count
+          as the day's execution. Their alignment is set fresh each game by the Storyteller and
+          is not revealed on death. They do not count toward the evil win condition of 2 players remaining.
+          A traveller's role is known to all players.
         </p>
       </div>
 
@@ -676,6 +695,104 @@
           The classic Demon. Can "jump" to a Minion if cornered — a Minion becoming Imp can
           completely reset good's deductions. The jump is a powerful strategy when the Imp
           suspects they are identified. Acts every night except the first.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- TRAVELLERS -->
+    <div class="alignment-heading align-trav" style="margin-top:2.5rem;" id="travellers">Travellers — Variable</div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">
+      Travellers may be good or evil — their alignment is chosen each game and not publicly known.
+      They can be exiled by vote at any time without using up the day's execution.
+    </p>
+    <div class="role-grid">
+
+      <div class="role-card trav">
+        <div class="role-header">
+          <span class="role-name">Beggar</span>
+          <span class="role-type">Traveller</span>
+        </div>
+        <p class="role-ability">
+          "If a dead player gives you their vote token, you learn their alignment. You must use
+          your vote token to vote if you are able to."
+        </p>
+        <p class="role-tip">
+          Creates a mechanism for the dead to pass verified alignment info to a living player.
+          The compulsory voting clause limits the Beggar's strategic freedom, as they can only vote with a token.
+        </p>
+      </div>
+
+      <div class="role-card trav">
+        <div class="role-header">
+          <span class="role-name">Bureaucrat</span>
+          <span class="role-type">Traveller</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player (not yourself): their vote counts as 3 votes tomorrow."
+        </p>
+        <p class="role-tip">
+          A good Bureaucrat can swing executions toward evil players; an evil one can protect
+          the Demon by amplifying the wrong vote. Coordinate carefully — or mislead carefully.
+        </p>
+      </div>
+
+      <div class="role-card trav">
+        <div class="role-header">
+          <span class="role-name">Gunslinger</span>
+          <span class="role-type">Traveller</span>
+        </div>
+        <p class="role-ability">
+          "Each day, after the first vote has been tallied, you may choose a player that voted:
+          they die immediately."
+        </p>
+        <p class="role-tip">
+          Powerful but risky — killing a voter before the day ends can shift the vote count.
+          An evil Gunslinger can eliminate good voters to protect their Demon.
+        </p>
+      </div>
+
+      <div class="role-card trav">
+        <div class="role-header">
+          <span class="role-name">Scapegoat</span>
+          <span class="role-type">Traveller</span>
+        </div>
+        <p class="role-ability">
+          "If a player of your alignment is executed, you might be executed instead."
+        </p>
+        <p class="role-tip">
+          A good Scapegoat can absorb an execution meant for a Townsfolk, saving a valuable role.
+          An evil Scapegoat could absorb an execution meant for the Demon — an enormous swing.
+        </p>
+      </div>
+
+      <div class="role-card trav">
+        <div class="role-header">
+          <span class="role-name">Apprentice</span>
+          <span class="role-type">Traveller</span>
+        </div>
+        <p class="role-ability">
+          "On your first night, you gain a Townsfolk ability (if good) or a Minion ability
+          (if evil). On your last night, you lose it."
+        </p>
+        <p class="role-tip">
+          Effectively a wildcard — an evil Apprentice with a Poisoner or Witch ability is
+          very dangerous. Good ones gain a bonus information ability for the run of the game.
+        </p>
+      </div>
+
+      <div class="role-card trav">
+        <div class="role-header">
+          <span class="role-name">Thief</span>
+          <span class="role-type">Traveller</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player (not yourself): their vote counts negatively tomorrow."
+        </p>
+        <p class="role-tip">
+          The evil counterpart to the Bureaucrat. A negative vote subtracts from the tally,
+          making it harder to reach the majority needed to execute. Can protect the Demon
+          at the cost of public suspicion on the Thief.
         </p>
       </div>
 

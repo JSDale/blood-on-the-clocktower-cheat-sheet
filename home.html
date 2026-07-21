@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood on the Clocktower — Cheat Sheet</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+    :root {
+      --bg:        #0e0a12;
+      --bg-card:   #16101f;
+      --bg-card2:  #1c1428;
+      --border:    #3a2a4a;
+      --accent:    #9b1c1c;
+      --accent2:   #c0392b;
+      --gold:      #c9a84c;
+      --text:      #e8dfd0;
+      --muted:     #8b7d9a;
+
+      --town:      #1a3a5c;
+      --town-b:    #2a5a8c;
+      --town-t:    #7ec8e3;
+
+      --out:       #3a2a0a;
+      --out-b:     #7a5a1a;
+      --out-t:     #e8c96a;
+
+      --min:       #3a1a0a;
+      --min-b:     #8c3a1a;
+      --min-t:     #f09060;
+
+      --dem:       #2a0a0a;
+      --dem-b:     #8c1a1a;
+      --dem-t:     #f06060;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: radial-gradient(ellipse at top, #1e0a0a 0%, var(--bg) 70%);
+      border-bottom: 1px solid var(--accent);
+    }
+
+    header::before {
+      content: '☽ ✦ ☾';
+      display: block;
+      color: var(--gold);
+      font-size: 1.4rem;
+      letter-spacing: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      color: var(--gold);
+      text-shadow: 0 0 30px rgba(201,168,76,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    header p.subtitle {
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.4rem;
+      font-size: 1rem;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── Section headings ── */
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      color: var(--gold);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* ── About ── */
+    .about-box {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      padding: 1.5rem 2rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .about-box p + p { margin-top: 0.75rem; }
+
+    /* ── Rules ── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .rule-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.3rem;
+    }
+
+    .rule-card h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .rule-card p {
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    /* ── Alignment group labels ── */
+    .alignment-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 2rem 0 0.9rem;
+      padding: 0.3rem 1rem;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .align-town   { background: var(--town);  color: var(--town-t);  border-left: 3px solid var(--town-b); }
+    .align-out    { background: var(--out);   color: var(--out-t);   border-left: 3px solid var(--out-b); }
+    .align-minion { background: var(--min);   color: var(--min-t);   border-left: 3px solid var(--min-b); }
+    .align-demon  { background: var(--dem);   color: var(--dem-t);   border-left: 3px solid var(--dem-b); }
+
+    /* ── Role cards ── */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .role-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.3rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .role-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .role-card.town   { border-top: 3px solid var(--town-b); }
+    .role-card.out    { border-top: 3px solid var(--out-b);  }
+    .role-card.minion { border-top: 3px solid var(--min-b);  }
+    .role-card.demon  { border-top: 3px solid var(--dem-b);  }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+    }
+
+    .role-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .role-card.town   .role-name { color: var(--town-t); }
+    .role-card.out    .role-name { color: var(--out-t);  }
+    .role-card.minion .role-name { color: var(--min-t);  }
+    .role-card.demon  .role-name { color: var(--dem-t);  }
+
+    .role-type {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      font-family: 'Cinzel', serif;
+    }
+
+    .role-ability {
+      font-size: 0.97rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      font-style: italic;
+      border-left: 2px solid var(--border);
+      padding-left: 0.7rem;
+    }
+
+    .role-tip {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ── Tip box ── */
+    .tip-box {
+      background: rgba(155,28,28,0.12);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem 1.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .tip-box strong { color: var(--gold); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .role-grid  { grid-template-columns: 1fr; }
+      .rules-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Blood on the Clocktower</h1>
+  <p class="subtitle">Quick Reference Cheat Sheet</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#rules">Rules Overview</a>
+  <a href="#roles">Roles</a>
+</nav>
+
+<main>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    <h2 class="section-title">&#128220; About This Sheet</h2>
+    <div class="about-box">
+      <p>
+        <!-- Replace this text with your own notes about your group, house rules, or anything else you want to remember. -->
+        This is a personal reference card for our Blood on the Clocktower sessions.
+        Fill this section in with notes about your regular players, house rules, or any
+        reminders that help your group run smoother games.
+      </p>
+      <p>
+        <!-- Add more paragraphs as needed. -->
+        Last updated: <em>July 2026</em>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ RULES OVERVIEW ══ -->
+  <section id="rules">
+    <h2 class="section-title">&#9878;&#65039; Rules Overview</h2>
+
+    <div class="rules-grid">
+
+      <div class="rule-card">
+        <h3>Objective</h3>
+        <p>
+          <strong>Good team</strong> wins by executing the Demon before it kills everyone.
+          <strong>Evil team</strong> wins when only 2 players remain alive (or through certain special conditions).
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Teams</h3>
+        <p>
+          Players are secretly assigned a role. <strong>Townsfolk &amp; Outsiders</strong> are Good.
+          <strong>Minions &amp; Demons</strong> are Evil. The Demon knows its Minions; Minions know the Demon.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Day Phase</h3>
+        <p>
+          Players discuss openly, share (or lie about) information, and eventually nominate players
+          for execution. Each player may nominate once per day. A majority vote executes the nominee.
+          Only one player can be executed per day.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Night Phase</h3>
+        <p>
+          All players close their eyes. The Storyteller wakes players in a set order so they may
+          use their night abilities. The Demon chooses a kill target. Dead players may still
+          participate in discussions but cannot vote or use abilities.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Death &amp; Voting</h3>
+        <p>
+          Dead players keep their vote token but may only use it <em>once</em> for the rest of the game.
+          Players who die at night are revealed the following morning. Executed players reveal their
+          character immediately.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>The Storyteller</h3>
+        <p>
+          The Storyteller runs the game: they wake players, deliver information, and can
+          make judgment calls to keep the game fun and balanced. They may give slightly false
+          information to poisoned or drunk players.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Poison &amp; Drunk</h3>
+        <p>
+          A poisoned or drunk player's ability <em>malfunctions</em>: they still receive information
+          but it may be false. They do not know they are affected. The Storyteller controls what
+          false info is given.
+        </p>
+      </div>
+
+      <div class="rule-card">
+        <h3>Win Conditions</h3>
+        <p>
+          Good wins the moment the last Demon is executed or dies at night. Evil wins at the
+          <em>start</em> of a day when only 2 players remain alive. Some roles have alternate win
+          conditions — check the role card.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <strong>First Night vs. Other Nights:</strong> An asterisk (*) on a role means it acts on
+      "other nights" — i.e. every night <em>except</em> the first. Roles without * may act on
+      night 1 as well. The Storyteller follows a set order printed on the night sheet.
+    </div>
+  </section>
+
+  <!-- ══ ROLES ══ -->
+  <section id="roles">
+    <h2 class="section-title">&#127917; Roles</h2>
+
+    <!-- TOWNSFOLK -->
+    <div class="alignment-heading align-town">Townsfolk — Good</div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">
+      Townsfolk are the backbone of the good team. Their abilities gather information to find and
+      execute the Demon. They must share and cross-reference clues to overcome Minion deception.
+    </p>
+    <div class="role-grid">
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Chef</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "You start knowing how many pairs of evil players are sitting adjacent to each other."
+        </p>
+        <p class="role-tip">
+          A count of 0 means no evil neighbors; a high count suggests a cluster of evil players.
+          Acts on the first night only. Pairs are counted, not individual evil players.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Empath</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Each night, you learn how many of your 2 alive neighbors are evil."
+        </p>
+        <p class="role-tip">
+          As players die your neighbors change, giving new data each night. A consistent 0
+          suggests both neighbors are safe; a 2 confirms at least one is almost certainly evil.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Fortune Teller</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose 2 players: you learn if either is a Demon. There is a good player
+          who registers as a Demon to you."
+        </p>
+        <p class="role-tip">
+          One innocent player will always ping as a Demon — your "red herring." Use process of
+          elimination across nights to identify which yes-result is the real Demon.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Investigator</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "You start knowing that 1 of 2 players is a particular Minion."
+        </p>
+        <p class="role-tip">
+          First-night only. You learn a specific Minion type and two candidates. One of them
+          really is that Minion. Comparing with the Librarian's Outsider info can narrow suspects.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Librarian</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "You start knowing that 1 of 2 players is a particular Outsider — or that no Outsiders
+          are in play."
+        </p>
+        <p class="role-tip">
+          First-night only. Useful for confirming or ruling out Drunk/Outsider claims.
+          If the Storyteller says zero Outsiders, take that at face value.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Monk</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Each night*, choose a player (not yourself): they are safe from the Demon tonight."
+        </p>
+        <p class="role-tip">
+          Acts every night except the first. Protect high-value information roles. If your
+          protected player still dies, a Minion may have caused the kill, or you were poisoned.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Mayor</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "If only 3 players live and no execution occurs, your team wins. If you die at night,
+          another player might die instead."
+        </p>
+        <p class="role-tip">
+          A powerful late-game win condition — the good team can skip the final execution and
+          win outright. The Demon will try to kill you early; your night-death redirect is
+          chosen by the Storyteller.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Oracle</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Each night*, you learn how many dead players are evil."
+        </p>
+        <p class="role-tip">
+          Tracks the proportion of evil players in the graveyard over time. If the count
+          doesn't rise after an execution, the executed player was probably good.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Seamstress</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Once per game, at night, choose 2 players (not yourself): you learn if they are the
+          same alignment."
+        </p>
+        <p class="role-tip">
+          One-shot ability. Best used mid-game when you have two suspects. A "same" result on a
+          known-good player confirms the other is also good — or reveals a lying Minion pair.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Dreamer</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player (not yourself or Travellers): you learn 1 good &amp;
+          1 evil character, 1 of which is correct."
+        </p>
+        <p class="role-tip">
+          You always get exactly one true answer among the two shown. Cross-reference with
+          other players' role claims — if neither character is plausible, one is bluffing.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- OUTSIDERS -->
+    <div class="alignment-heading align-out" style="margin-top:2.5rem;">Outsiders — Good (kind of)</div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">
+      Outsiders are on the good team but their abilities often hinder it. Evil may add extra
+      Outsiders via certain Minion roles. Watch out — an Outsider claim can be a Minion bluff.
+    </p>
+    <div class="role-grid">
+
+      <div class="role-card out">
+        <div class="role-header">
+          <span class="role-name">Drunk</span>
+          <span class="role-type">Outsider</span>
+        </div>
+        <p class="role-ability">
+          "You do not know you are the Drunk. You think you are a Townsfolk character, but your
+          ability malfunctions."
+        </p>
+        <p class="role-tip">
+          The Drunk believes they are a different (valid) Townsfolk role and receives false or
+          misleading information all game. Any claim a Drunk makes is sincere but unreliable.
+          If you suspect someone is Drunk, treat their info with caution.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MINIONS -->
+    <div class="alignment-heading align-minion" style="margin-top:2.5rem;">Minions — Evil</div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">
+      Minions know the Demon and each other from night 1. Their job is to disrupt, deceive,
+      and protect the Demon until evil reaches a winning position.
+    </p>
+    <div class="role-grid">
+
+      <div class="role-card minion">
+        <div class="role-header">
+          <span class="role-name">Poisoner</span>
+          <span class="role-type">Minion</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player: they are poisoned tonight and tomorrow day. Their ability
+          malfunctions."
+        </p>
+        <p class="role-tip">
+          The most disruptive Minion — corrupts Townsfolk information silently. Targets high-value
+          roles like Fortune Teller or Empath. Poison wears off before the following night.
+        </p>
+      </div>
+
+      <div class="role-card minion">
+        <div class="role-header">
+          <span class="role-name">Witch</span>
+          <span class="role-type">Minion</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player: if they nominate tomorrow, they die. If only 3 players
+          live, this ability has no effect."
+        </p>
+        <p class="role-tip">
+          Creates a chilling effect — cursed players fear nominating. The Witch loses their power
+          in the endgame (3 players) to avoid a guaranteed evil win by silencing nominations.
+        </p>
+      </div>
+
+      <div class="role-card minion">
+        <div class="role-header">
+          <span class="role-name">Scarlet Woman</span>
+          <span class="role-type">Minion</span>
+        </div>
+        <p class="role-ability">
+          "If there are 5 or more players alive and the Demon dies, you become the Demon."
+        </p>
+        <p class="role-tip">
+          Evil's insurance policy. Good executing the Demon mid-game may hand evil a fresh
+          Demon. The Scarlet Woman is most dangerous when their existence is unknown. Does not
+          trigger below 5 alive players.
+        </p>
+      </div>
+
+      <div class="role-card minion">
+        <div class="role-header">
+          <span class="role-name">Cerenovus</span>
+          <span class="role-type">Minion</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player &amp; a good character: they are 'mad' about being that
+          character until dusk. If they are not mad, they might be executed."
+        </p>
+        <p class="role-tip">
+          Forces a player to publicly claim a specific role or risk being executed by the
+          Storyteller. This can blow cover for real Townsfolk or force weird claims that cast
+          suspicion. The Storyteller decides if the madness penalty applies.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- DEMONS -->
+    <div class="alignment-heading align-demon" style="margin-top:2.5rem;">Demons — Evil</div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">
+      There is one Demon per game. It wins when only 2 players remain. It kills each night and
+      must stay hidden. The good team's primary goal is to identify and execute it.
+    </p>
+    <div class="role-grid">
+
+      <div class="role-card demon">
+        <div class="role-header">
+          <span class="role-name">Imp</span>
+          <span class="role-type">Demon</span>
+        </div>
+        <p class="role-ability">
+          "Each night*, choose a player: they die. If you kill yourself this way, a Minion
+          becomes the Imp."
+        </p>
+        <p class="role-tip">
+          The classic Demon. Can "jump" to a Minion if cornered — a Minion becoming Imp can
+          completely reset good's deductions. The jump is a powerful strategy when the Imp
+          suspects they are identified. Acts every night except the first.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  Blood on the Clocktower is a game by The Pandemonium Institute. This cheat sheet is a
+  fan-made quick reference and is not affiliated with or endorsed by The Pandemonium Institute.
+</footer>
+
+</body>
+</html>

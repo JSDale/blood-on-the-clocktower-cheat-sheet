@@ -575,6 +575,81 @@
         </p>
       </div>
 
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Mathematician</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Each night, you learn how many players' abilities have malfunctioned due to another
+          character's ability tonight."
+        </p>
+        <p class="role-tip">
+          A count greater than 0 confirms a Poisoner, Drunk, or similar effect is active.
+          Extremely useful for validating whether other players' information is trustworthy.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Washerwoman</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "You start knowing that 1 of 2 players is a particular Townsfolk."
+        </p>
+        <p class="role-tip">
+          First-night only. You get a Townsfolk type and two candidates — one is genuinely
+          that role. Cross-reference with the Investigator and Librarian to triangulate suspects.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Virgin</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "The first time you are nominated, if the nominator is a Townsfolk, they are executed
+          immediately."
+        </p>
+        <p class="role-tip">
+          A powerful deterrent — evil players will avoid nominating you. If a nominator does
+          get executed, it confirms both the nominator was Townsfolk and you are the Virgin.
+          Bluffing as Virgin is risky for evil players.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Artist</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "Once per game, during the day, privately ask the Storyteller any yes/no question."
+        </p>
+        <p class="role-tip">
+          The most flexible information role in the game. Ask something specific and
+          falsifiable ("Is the Imp sitting to my left?"). Vague questions waste the ability.
+          The Storyteller answers truthfully.
+        </p>
+      </div>
+
+      <div class="role-card town">
+        <div class="role-header">
+          <span class="role-name">Soldier</span>
+          <span class="role-type">Townsfolk</span>
+        </div>
+        <p class="role-ability">
+          "You are safe from the Demon."
+        </p>
+        <p class="role-tip">
+          Passive protection — the Demon's nightly kill simply fails on you. No night action
+          required. Because the Demon knows you're immune, they'll skip you; if you survive
+          every night, it confirms your safety to the group.
+        </p>
+      </div>
+
     </div>
 
     <!-- OUTSIDERS -->
@@ -598,6 +673,52 @@
           The Drunk believes they are a different (valid) Townsfolk role and receives false or
           misleading information all game. Any claim a Drunk makes is sincere but unreliable.
           If you suspect someone is Drunk, treat their info with caution.
+        </p>
+      </div>
+
+      <div class="role-card out">
+        <div class="role-header">
+          <span class="role-name">Butler</span>
+          <span class="role-type">Outsider</span>
+        </div>
+        <p class="role-ability">
+          "Each night, choose a player (not yourself): tomorrow, you may only vote if they are
+          voting too."
+        </p>
+        <p class="role-tip">
+          Severely limits your voting independence. Choose your master wisely — if they are
+          evil, your vote becomes a tool of evil. Claiming Butler publicly can explain odd
+          voting behaviour without revealing your true situation.
+        </p>
+      </div>
+
+      <div class="role-card out">
+        <div class="role-header">
+          <span class="role-name">Recluse</span>
+          <span class="role-type">Outsider</span>
+        </div>
+        <p class="role-ability">
+          "You might register as evil &amp; as a Minion or Demon, even if dead."
+        </p>
+        <p class="role-tip">
+          Passively misleads detection roles like the Fortune Teller and Investigator. The
+          Storyteller decides when the Recluse registers as evil. Can create false positives
+          that send good on a wild goose chase.
+        </p>
+      </div>
+
+      <div class="role-card out">
+        <div class="role-header">
+          <span class="role-name">Saint</span>
+          <span class="role-type">Outsider</span>
+        </div>
+        <p class="role-ability">
+          "If you are executed, your team loses."
+        </p>
+        <p class="role-tip">
+          The most dangerous Outsider for good. Evil will try to frame and nominate you;
+          good must be certain before ever voting to execute a Saint claim. Announcing your
+          role publicly is high-risk but can make you untouchable.
         </p>
       </div>
 
@@ -695,6 +816,23 @@
           The classic Demon. Can "jump" to a Minion if cornered — a Minion becoming Imp can
           completely reset good's deductions. The jump is a powerful strategy when the Imp
           suspects they are identified. Acts every night except the first.
+        </p>
+      </div>
+
+      <div class="role-card demon">
+        <div class="role-header">
+          <span class="role-name">Vortox</span>
+          <span class="role-type">Demon</span>
+        </div>
+        <p class="role-ability">
+          "Each night*, choose a player: they die. Townsfolk abilities that give information
+          always give false information. Each day, if no-one is executed, evil wins."
+        </p>
+        <p class="role-tip">
+          The most chaotic Demon — all Townsfolk information is guaranteed false, so good must
+          reason inversely (treat every answer as its opposite). Evil wins automatically on any
+          day without an execution, so good can never skip. The Vortox's presence can often be
+          deduced when all information contradicts itself.
         </p>
       </div>
 
